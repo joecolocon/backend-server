@@ -1,7 +1,6 @@
 //Requires
 var express = require('express');
-var Usuario = require('../models/usuario');
-var bcrypt = require('bcryptjs');
+var Medico = require('../models/medico');
 var mdAutenticacion = require('../middleware/autenticacion');
 
 var app = express();
@@ -14,26 +13,25 @@ app.get('/', (req, res, _next) => {
     var limit = req.query.limit || 5;
     limit = Number(limit);
 
-
-    Usuario
-        .find({}, 'nombre email img role')
+    Medico.find({}, 'nombre img hospital usuario')
+        .populate('hospital', 'nombre')
+        .populate('usuario', 'nombre email')
         .skip(desde)
         .limit(limit)
-        .exec((err, usuarios) => {
+        .exec((err, medicos) => {
             if (err) {
                 return res.status(500).json({
                     ok: false,
-                    message: 'Error cargando usuario',
+                    message: 'Error cargando médico',
                     errors: err
                 });
             }
 
-            Usuario.count({}, (err, contador) => {
-
+            Medico.count({}, (err, contador) => {
                 return res.status(200).json({
                     ok: true,
-                    message: 'peticion de usuarios correcta',
-                    usuarios,
+                    message: 'peticion de médicos correcta',
+                    medicos: medicos,
                     total: contador
                 });
             });
@@ -42,31 +40,30 @@ app.get('/', (req, res, _next) => {
 
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
-    //Usuario.post()
     let body = req.body;
-    let usuario = new Usuario({
+    let medico = new Medico({
         nombre: body.nombre,
-        email: body.email,
-        password: bcrypt.hashSync(body.password, 10),
         img: body.img,
-        role: body.role
+        hospital: body.hospital,
+        usuario: req.usuario._id //usuario creador del registro
     });
 
-    usuario.save((err, usuariodb) => {
+    medico.save((err, medicodb) => {
 
         if (err) {
             return res.status(422).json({
                 ok: false,
-                message: 'Error creando usuario',
+                message: 'Error creando médico',
                 errors: err
             });
         }
 
-        return res.status(201).header({ 'Location': '/usuarios/' + usuariodb._id }).json({
+        return res.status(201).header({
+            'Location': '/medico/' + medicodb._id
+        }).json({
             ok: true,
-            message: 'creacion de usuario correcta',
-            body: usuariodb,
-            caller: req.usuario
+            message: 'creacion de médico correcta',
+            body: medicodb
         });
 
     });
@@ -80,39 +77,34 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
     let id = req.params.id;
     let body = req.body;
 
-    let usuario = null;
+    let medico = null;
 
-    Usuario.findById(id, (err, usuario) => {
-        if (err || !usuario) {
+    Medico.findById(id, (err, medico) => {
+        if (err || !medico) {
             return res.status(err ? 500 : 404).json({
                 ok: false,
-                message: 'Error cargando usuario',
+                message: 'Error cargando médico',
                 ...(err && { errors: err }) // way to define an optional property errors
             });
         }
 
-        usuario.nombre = body.nombre;
-        usuario.email = body.email;
-        usuario.role = body.role;
-        if (body.img) {
-            usuario.img = body.img;
-        }
+        medico.nombre = body.nombre;
+        medico.hospital = body.hospital;
+        medito.usuario = req.usuario._id;
 
-        usuario.save((err, usuarioGuardado) => {
+        medico.save((err, medicoGuardado) => {
 
             if (err) {
                 return res.status(422).json({
                     ok: false,
-                    message: 'Error actualizando usuario',
+                    message: 'Error actualizando médico',
                     errors: err
                 });
             }
 
-            usuarioGuardado.password = ':-)';
-
             return res.status(200).json({
                 ok: true,
-                usuario: usuarioGuardado
+                medico: medicoGuardado
             });
 
         });
@@ -124,19 +116,19 @@ app.delete('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
     let id = req.params.id;
 
-    let usuario = null;
+    let medico = null;
 
-    Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
-        if (err || !usuarioBorrado) {
+    Medico.findByIdAndRemove(id, (err, medicoBorrado) => {
+        if (err || !medicoBorrado) {
             return res.status(err ? 500 : 404).json({
                 ok: false,
-                message: 'Error borrando usuario',
+                message: 'Error borrando médico',
                 ...(err && { errors: err }) // way to define an optional property errors
             });
         }
         return res.status(200).json({
             ok: true,
-            usuario: usuarioBorrado
+            medico: medicoBorrado
         });
 
     });

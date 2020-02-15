@@ -17,7 +17,7 @@ exports.verificaToken = (req, res, next) => {
         }
 
         // establezco el usuario en todas las request que usen esta funcion de autenticacion.
-        req.usuario = decoded;
+        req.usuario = decoded.usuario;
 
         //Continuar con el flujo que continua en el modulo.
         next();
