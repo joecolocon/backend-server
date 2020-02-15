@@ -1,0 +1,1226 @@
+{
+	"info": {
+		"_postman_id": "a50b48bd-858b-4b8e-b3fb-4e1a9a48466e",
+		"name": "angular avz course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "identificacion correcta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "169ded13-7f45-4d92-9125-97ad62882f7d",
+						"exec": [
+							"pm.test(\"getToken\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.token).not.to.be.empty;",
+							"    pm.environment.set(\"token\", jsonData.token);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "pepe3@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "TOT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda en todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/busqueda/algo/l",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"busqueda",
+						"algo",
+						"l"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/busqueda/coleccion/usuarios/l",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"busqueda",
+						"coleccion",
+						"usuarios",
+						"l"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda hospitales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/busqueda/coleccion/hospitales/l",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"busqueda",
+						"coleccion",
+						"hospitales",
+						"l"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda medicos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/busqueda/coleccion/medicos/l",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"busqueda",
+						"coleccion",
+						"medicos",
+						"l"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "busqueda ambulancias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/busqueda/coleccion/ambulancia/k",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"busqueda",
+						"coleccion",
+						"ambulancia",
+						"k"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/usuarios?desde=0&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener hospitales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/hospital?desde=0&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"hospital"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener medicos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/medico?desde=0&limit=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"medico"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener imagen Hospital",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/img/hospitales/{{hospitalImg}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"img",
+						"hospitales",
+						"{{hospitalImg}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener imagen medico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/img/medicos/{{medicoImg}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"img",
+						"medicos",
+						"{{medicoImg}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener imagen usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/img/usuarios/{{usuarioImg}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"img",
+						"usuarios",
+						"{{usuarioImg}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload img hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3b24b9a-6517-4811-a294-7da09013c0f1",
+						"exec": [
+							"pm.test(\"get Hospital img\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"hospitalImg\", jsonData.hospital.img);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/C:/Users/UX370U/Documents/Angular_avz/assets/images/background/user-info.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload/hospitales/{{hospitalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload",
+						"hospitales",
+						"{{hospitalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload img medico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b11dd50-d649-4360-9686-5a0a3025c418",
+						"exec": [
+							"pm.test(\"get Medico img\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"medicoImg\", jsonData.medico.img);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/C:/Users/UX370U/Pictures/joker.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload/medicos/{{medicoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload",
+						"medicos",
+						"{{medicoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload img usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "63ff4ea0-c819-454e-8524-6be89d7aeddb",
+						"exec": [
+							"pm.test(\"get Usuario img\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"usuarioImg\", jsonData.usuario.img);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/C:/Users/UX370U/Pictures/joker.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload/usuarios/{{usuarioId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload",
+						"usuarios",
+						"{{usuarioId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear usuarios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a596636d-d4d3-4e90-a4e3-a561387310ca",
+						"exec": [
+							"pm.test(\"get Hospital id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"usuarioId\", jsonData.body._id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Xena1",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "xena1@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "TOT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca8a1eb-1ab6-411b-9913-90b02edef465",
+						"exec": [
+							"pm.test(\"get Hospital id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"hospitalId\", jsonData.body._id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "hospital6",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/hospital",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"hospital"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear medicos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7630ab30-0416-48b3-8392-498f7efcb03d",
+						"exec": [
+							"pm.test(\"get Hospital id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"medicoId\", jsonData.body._id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "medico1",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hospital",
+							"value": "{{hospitalId}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/medico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"medico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update usuarios",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "pepe actualizado",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "pepe3@example.com",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "ADMIN_ROLE",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/5e4342c771b1683faf10ab96",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"5e4342c771b1683faf10ab96"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca8a1eb-1ab6-411b-9913-90b02edef465",
+						"exec": [
+							"pm.test(\"get Hospital id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"    pm.environment.set(\"hospitalId\", jsonData.body._id);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "hospital7",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/hospital/{{hospitalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"hospital",
+						"{{hospitalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update last medico",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "medico nuevo ",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hospital",
+							"value": "{{hospitalId}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/medico/{{medicoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"medico",
+						"{{medicoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/5e4342ee71b1683faf10ab9b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"5e4342ee71b1683faf10ab9b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete medico",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "medico nuevo ",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "hospital",
+							"value": "{{hospitalId}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/medico/{{medicoId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"medico",
+						"{{medicoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Hospital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca8a1eb-1ab6-411b-9913-90b02edef465",
+						"exec": [
+							"pm.test(\"get Hospital id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ok).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "hospital7",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/hospital/{{hospitalId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"hospital",
+						"{{hospitalId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "identificacion erronea por email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0db1c35a-2590-4744-a3e4-fa67a3651b6e",
+						"exec": [
+							"pm.test(\"not get Token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.token).to.be.an('undefined');",
+							"    pm.expect(jsonData.ok).to.be.false;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "pepe3@example.com.bad",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "TOT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "identificacion erronea por password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c774feed-50f3-42ae-89ce-021a8c01348b",
+						"exec": [
+							"pm.test(\"not get Token\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.token).to.be.an('undefined');",
+							"    pm.expect(jsonData.ok).to.be.false;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "pepe3@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234567",
+							"type": "text"
+						},
+						{
+							"key": "img",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "role",
+							"value": "TOT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
