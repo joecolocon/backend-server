@@ -82,6 +82,84 @@
 			"response": []
 		},
 		{
+			"name": "identificacion correcta google",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "169ded13-7f45-4d92-9125-97ad62882f7d",
+						"exec": [
+							"pm.test(\"getToken\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.token).not.to.be.empty;",
+							"    pm.environment.set(\"token\", jsonData.token);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "pepe",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "pepe3@example.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc2MmZhNjM3YWY5NTM1OTBkYjhiYjhhNjM2YmYxMWQ0MzYwYWJjOTgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjcwMDgwNjg4NzU0LWlxNG1ydGozanB0MzVrMGNyZGZpNDc2MHBwaTNlbGJxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjcwMDgwNjg4NzU0LWlxNG1ydGozanB0MzVrMGNyZGZpNDc2MHBwaTNlbGJxLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEyMTg3NTY1ODEzNjQ5MDUwODc5IiwiZW1haWwiOiJqb2Vjb2xvY29uQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiSzNXeHlabUw4enI0UnJFRjRvNURGZyIsIm5hbWUiOiJKb3NlIEx1aXMgTW9yZW5vIFZpZ2lsIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BQXVFN21BRUc2OHVfRGp0WlE3UVhfRThTVDY2Zl8tYzRFSHZNWUU4YW90NUVBPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ikpvc2UgTHVpcyIsImZhbWlseV9uYW1lIjoiTW9yZW5vIFZpZ2lsIiwibG9jYWxlIjoiZXMiLCJpYXQiOjE1ODE4MDkxMjIsImV4cCI6MTU4MTgxMjcyMiwianRpIjoiYTUyMjc0YjdmZjZjNjFjMDdhMmIxZTNhYjNkYzk4NDI2OThmZWE2YyJ9.JtcNkGcNYaP_5IgDQWsk-yuHsTgRSU3VjpznIW0h9m45vFnGkjLcUA5NPV2dMqdhG1cFOSJMuUZ5O9HGNs44rBiVPy5OiJbOTgLRFRQDNL9zMeNWk429lpjvwp2wzJaaccHQMJhVDf7bLnHYppQ-XnrH1V1YkK5qT0dzMVwbgr3e7Of_Dl_zTIVNL4AniLHHiL_dakgDDBJgDnO0BrgQe_AgfDnX60Hvjp4oLUrq1fKCu_-8_P1ubgtPOwnePkuVtCKJ9smyxx2SzLQETBiZvqWNzzqWa3frIdp-L2AgWLSEwxkUrHybPD5oYzxg3dWPChKDWAbWP70rHEQZxLdmiQ",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "TOT",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login/google",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login",
+						"google"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "busqueda en todos",
 			"request": {
 				"method": "GET",
