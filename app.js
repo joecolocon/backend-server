@@ -1,10 +1,14 @@
 //Requires
 var express = require('express');
+var cors = require('cors');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 //initvar
 var app = express();
+
+//enable cors calls
+app.use(cors());
 
 //body-parser configuration to analyze application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
