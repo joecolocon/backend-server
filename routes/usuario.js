@@ -40,7 +40,7 @@ app.get('/', (req, res, _next) => {
         });
 });
 
-app.post('/', mdAutenticacion.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
 
     //Usuario.post()
     let body = req.body;
