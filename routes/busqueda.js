@@ -116,7 +116,7 @@ function doall(busqueda, regexp) {
 //Promise de busqueda de hospitales
 function buscarHospitales(busqueda, regexp) {
     return new Promise((resolve, reject) => {
-        Hospital.find({ nombre: regexp }, "nombre")
+        Hospital.find({ nombre: regexp }, "nombre img")
             .populate("usuario", "nombre email")
             .exec((err, hospitales) => {
                 if (err) {
@@ -131,7 +131,7 @@ function buscarHospitales(busqueda, regexp) {
 
 function buscarMedicos(busqueda, regexp) {
     return new Promise((resolve, reject) => {
-        Medico.find({ nombre: regexp }, "nombre")
+        Medico.find({ nombre: regexp }, "nombre img")
             .populate("usuario", "nombre email")
             .populate("hospital")
             .exec((err, medicos) => {

@@ -124,9 +124,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
         }
 
         hospital.nombre = body.nombre;
-        hospitat.usuario = req.usuario._id;
-
-
+        hospital.usuario = req.usuario._id;
 
         hospital.save((err, hospitalGuardado) => {
 

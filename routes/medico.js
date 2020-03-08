@@ -38,6 +38,32 @@ app.get('/', (req, res, _next) => {
         });
 });
 
+app.get('/:id', (req, res) => {
+
+    let id = req.params.id;
+    let body = req.body;
+
+    let medico = null;
+
+    Medico.findById(id, 'nombre img hospital usuario')
+        .populate('hospital', 'nombre')
+        .populate('usuario', 'nombre email')
+        .exec((err, medico) => {
+            if (err || !medico) {
+                return res.status(err ? 500 : 404).json({
+                    ok: false,
+                    message: 'Error cargando médico',
+                    ...(err && { errors: err }) // way to define an optional property errors
+                });
+            }
+
+            return res.status(200).json({
+                ok: true,
+                medico
+            });
+        });
+});
+
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     let body = req.body;
@@ -90,7 +116,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
         medico.nombre = body.nombre;
         medico.hospital = body.hospital;
-        medito.usuario = req.usuario._id;
+        medico.usuario = req.usuario._id;
 
         medico.save((err, medicoGuardado) => {
 
