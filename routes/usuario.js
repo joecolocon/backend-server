@@ -75,7 +75,7 @@ app.post('/', (req, res) => {
 });
 
 
-app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
+app.put('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaAdminOSameUser], (req, res) => {
 
     let id = req.params.id;
     let body = req.body;
@@ -120,7 +120,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 });
 
 
-app.delete('/:id', mdAutenticacion.verificaToken, (req, res) => {
+app.delete('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaAdmin], (req, res) => {
 
     let id = req.params.id;
 

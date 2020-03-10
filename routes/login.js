@@ -136,9 +136,42 @@ function usuarioYToken(usuariodb, res) {
         ok: true,
         message: 'identificación correcta',
         body: usuariodb,
-        token: token
+        token: token,
+        menu: obtenerMenu(usuariodb.role)
     });
 
+}
+
+function obtenerMenu(ROLE) {
+
+    console.log("menu del role", ROLE);
+
+    let menu = [{
+            titulo: 'Principal',
+            icono: 'mdi mdi-gauge',
+            submenu: [
+                { titulo: 'Tablero', url: '/dashboard' },
+                { titulo: 'Progreso', url: '/progress' },
+                { titulo: 'Gráficas', url: '/graficas1' },
+                { titulo: 'Promesas', url: '/promesas' },
+                { titulo: 'Observables', url: '/rxjs' }
+            ]
+        },
+        {
+            titulo: 'Mantenimiento',
+            icono: 'mdi mdi-folder-lock-open',
+            submenu: [
+                { titulo: 'Hospitales', url: '/hospitales' },
+                { titulo: 'Médicos', url: '/medicos' }
+            ]
+        }
+    ];
+
+    if (ROLE == 'ADMIN_ROLE') {
+        menu[1].submenu.unshift({ titulo: 'Usuarios', url: '/usuarios' });
+    }
+
+    return menu;
 }
 
 module.exports = app;

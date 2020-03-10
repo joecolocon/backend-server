@@ -25,3 +25,35 @@ exports.verificaToken = (req, res, next) => {
     });
 
 };
+
+exports.verificaAdmin = (req, res, next) => {
+
+    var usuario = req.usuario;
+    if (usuario.role === 'ADMIN_ROLE') {
+        next();
+        return;
+    }
+
+    return res.status(403).json({
+        ok: false,
+        message: 'required role admin',
+        error: 'UNAUTHORIZED'
+    });
+
+};
+
+exports.verificaAdminOSameUser = (req, res, next) => {
+
+    var usuario = req.usuario;
+    if (usuario.role === 'ADMIN_ROLE' || req.usuario._id === req.params.id) {
+        next();
+        return;
+    }
+
+    return res.status(403).json({
+        ok: false,
+        message: 'required role admin',
+        error: 'UNAUTHORIZED'
+    });
+
+};
